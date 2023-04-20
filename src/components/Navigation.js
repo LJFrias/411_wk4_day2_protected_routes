@@ -6,6 +6,15 @@ import MenuIcon from "@mui/icons-material/Menu";
 
 const Navigation = () => {
   const navigate = useNavigate();
+  const cookies = cookie.parse(document.cookie)
+
+  const deleteCookie = () => {
+    if(cookies['loggedin']){
+      return document.cookie = 'loggedin=; max-age=0', navigate("/login")
+    } else {
+      navigate("/login")
+    }
+  }
 
   return (
     <AppBar position="relative">
@@ -25,14 +34,9 @@ const Navigation = () => {
           </li>
           <li
             className="nav-list-item"
-            onClick={() => {
-              document.cookie = cookie.serialize("loggedIn", null, {
-                maxAge: 0,
-              });
-              navigate("/login");
-            }}
+            onClick={deleteCookie}
           >
-            Logout
+            {cookies['loggedin'] ? 'Logout' : 'Login'} 
           </li>
         </ul>
       </Toolbar>

@@ -20,10 +20,17 @@ const Login = () => {
     });
   };
 
+  //Challenge
+  // the button should say Log in when there's no cookie
+  // After login, the button should say Log out
+  // When logged out, the cookie should either be deleted or set to ""
+
   const login = (e) => {
     e.preventDefault();
     // set cookie here
     // set loggedIn = true and max-age = 60*1000 (one minute)
+
+    document.cookie = "loggedin=true; max-age=60*100"
 
     navigate("/");
   };
