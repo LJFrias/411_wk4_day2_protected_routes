@@ -10,7 +10,8 @@ const Navigation = () => {
 
   const deleteCookie = () => {
     if(cookies['loggedin']){
-      return document.cookie = 'loggedin=; max-age=0', navigate("/login")
+      document.cookie = 'loggedin=; max-age=0'
+      navigate("/login")
     } else {
       navigate("/login")
     }
